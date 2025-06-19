@@ -9,17 +9,17 @@ class Solution {
             int lineLength = words[i].length();
             int j = i + 1;
 
-            // Try to fit as many words as possible in the line
+            
             while (j < words.length && lineLength + 1 + words[j].length() <= maxWidth) {
-                lineLength += 1 + words[j].length();  // 1 space + word length
+                lineLength += 1 + words[j].length(); 
                 j++;
             }
 
             int numberOfWords = j - i;
-            int totalSpaces = maxWidth - (lineLength - (numberOfWords - 1)); // spaces to distribute
+            int totalSpaces = maxWidth - (lineLength - (numberOfWords - 1)); 
             StringBuilder line = new StringBuilder();
 
-            // Last line or line with only one word → left-justified
+            
             if (j == words.length || numberOfWords == 1) {
                 for (int k = i; k < j; k++) {
                     line.append(words[k]);
@@ -28,7 +28,7 @@ class Solution {
                     }
                 }
 
-                // Add trailing spaces to match maxWidth
+                
                 while (line.length() < maxWidth) {
                     line.append(" ");
                 }
@@ -43,11 +43,11 @@ class Solution {
                         line.append(" ");
                     }
                 }
-                line.append(words[j - 1]); // last word
+                line.append(words[j - 1]); 
             }
 
             result.add(line.toString());
-            i = j; // move to the next set of words
+            i = j;
         }
 
         return result;
