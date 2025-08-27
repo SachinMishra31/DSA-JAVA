@@ -1,29 +1,25 @@
 class Solution {
     public int maxScore(String s) {
-        char[] charArr = s.toCharArray();
-
-        
-        int totalSc = 0;
-
-        for (int i = 0; i < charArr.length-1; i++) {
-            int left = 0;
-            int right = 0;
-
-            for (int j = 0; j <= i; j++) {
-                if (charArr[j] == '0') {
-                    left++;
-                }
+        int totalOnes = 0;
+        int maxSc = 0;
+        for( char c : s.toCharArray()){
+            if( c == '1'){
+                totalOnes++;
             }
 
-            for (int k = i + 1; k < charArr.length; k++) {
-                if (charArr[k] == '1') {
-                    right++;
-                }
-            }
+            int leftZeroes = 0;
+            int rightOnes = totalOnes;
 
-            
-            totalSc = Math.max(totalSc, left+right );
+            for(int i = 0; i < s.length() - 1; i++){
+                if(s.charAt(i) == '0'){
+                    leftZeroes++;
+                }else{
+                    rightOnes--;
+                }
+            maxSc = Math.max( maxSc , leftZeroes + rightOnes);
+            }
         }
-          return totalSc;
+
+        return maxSc;
     }
 }
