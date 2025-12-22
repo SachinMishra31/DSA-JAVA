@@ -1,4 +1,3 @@
-# Write your MySQL query statement below
 SELECT 
     s.machine_id, 
     ROUND(AVG(e.timestamp - s.timestamp), 3) AS processing_time
